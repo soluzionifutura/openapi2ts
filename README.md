@@ -7,7 +7,7 @@ openapi2ts is a Node.js module that generates TypeScript interfaces from an Open
 To install openapi2ts, you need to have Node.js and npm installed on your machine. Then, run the following command:
 
 ```bash
-npm i openapi2ts
+npm i @soluzioni-futura/openapi2ts
 ```
 
 ## Usage
