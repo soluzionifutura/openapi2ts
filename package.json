@@ -1,0 +1,64 @@
+{
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "bin": {
+    "openapi2ts": "bin/cli.js"
+  },
+  "scripts": {
+    "start": "tsdx watch --onSuccess 'node .'",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:soluzionifutura/openapi2ts.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "@soluzioni-futura/openapi2ts",
+  "author": "Giovanni Bruno",
+  "module": "dist/openapi2ts.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/openapi2ts.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/openapi2ts.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^8.2.4",
+    "husky": "^8.0.3",
+    "size-limit": "^8.2.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.5.0",
+    "typescript": "^3.9.10"
+  },
+  "dependencies": {
+    "json-schema-to-typescript": "^11.0.4"
+  }
+}
