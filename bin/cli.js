@@ -10,7 +10,7 @@ if (args.includes("--version") || args.includes("-v")) {
 }
 
 if (!input || !output) {
-  console.error("Usage: openapi-typescript-parser <input> <output>")
+  console.error("Usage: openapi2ts <input> <output>")
   process.exit(1)
 }
 
