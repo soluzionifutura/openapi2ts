@@ -49,8 +49,7 @@ export async function parse({
       bannerComment: "",
       enableConstEnums: false,
       style: {
-        semi: false,
-        
+        semi: false
       }
     })
   }))).join("\n")
