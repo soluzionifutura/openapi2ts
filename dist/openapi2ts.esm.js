@@ -367,6 +367,7 @@ function _parse() {
             if (exports.has(name)) {
               throw new Error("Duplicate schema name: " + name);
             }
+            exports.add(name);
             return compile(_dig(schema), name, {
               bannerComment: "",
               enableConstEnums: false,
@@ -381,7 +382,7 @@ function _parse() {
           if (outputFilePath) {
             writeFileSync(outputFilePath, data);
           }
-          return _context.abrupt("return", data);
+          return _context.abrupt("return", exports);
         case 10:
         case "end":
           return _context.stop();

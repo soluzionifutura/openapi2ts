@@ -33,7 +33,7 @@ export async function parse({
  * openapi definition and regenerate this file.
  */
 `
-}: Options): Promise<string> {
+}: Options): Promise<Set<string>> {
   if (typeof openapi === "string") {
     openapi = JSON.parse(readFileSync(openapi, "utf8")) as OpenAPIV3.Document
   }
@@ -44,6 +44,8 @@ export async function parse({
     if (exports.has(name)) {
       throw new Error(`Duplicate schema name: ${name}`)
     }
+
+    exports.add(name)
 
     return compile(_dig(schema), name, {
       bannerComment: "",
@@ -58,5 +60,5 @@ export async function parse({
     writeFileSync(outputFilePath, data)
   }
   
-  return data
+  return exports
 }
