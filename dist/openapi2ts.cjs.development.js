@@ -388,7 +388,10 @@ function _parse() {
           if (outputFilePath) {
             fs.writeFileSync(outputFilePath, data);
           }
-          return _context.abrupt("return", exports);
+          return _context.abrupt("return", {
+            data: data,
+            exports: exports
+          });
         case 10:
         case "end":
           return _context.stop();

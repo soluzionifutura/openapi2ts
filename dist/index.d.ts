@@ -4,4 +4,7 @@ export declare type Options = {
     bannerComment?: string;
     outputFilePath?: string;
 };
-export declare function parse({ openapi, outputFilePath, bannerComment }: Options): Promise<Set<string>>;
+export declare function parse({ openapi, outputFilePath, bannerComment }: Options): Promise<{
+    data: string;
+    exports: Set<string>;
+}>;
