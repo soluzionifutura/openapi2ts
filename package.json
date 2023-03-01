@@ -1,5 +1,5 @@
 {
-  "version": "1.1.1",
+  "version": "1.2.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -59,6 +59,7 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "json-schema-to-typescript": "^11.0.4"
+    "json-schema-to-typescript": "^11.0.4",
+    "openapi-types": "^12.1.0"
   }
 }

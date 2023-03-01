@@ -1,9 +1,9 @@
 import { readFileSync, writeFileSync } from "fs"
 import { compile } from "json-schema-to-typescript"
-import type { OpenAPIV3 } from "openapi-types"
+import type { OpenAPIV3_1 } from "openapi-types"
 
 export type Options = { 
-  openapi: OpenAPIV3.Document | string
+  openapi: OpenAPIV3_1.Document | string
   bannerComment?: string
   outputFilePath?: string
 }
@@ -35,7 +35,9 @@ export async function parse({
 `
 }: Options): Promise<Set<string>> {
   if (typeof openapi === "string") {
-    openapi = JSON.parse(readFileSync(openapi, "utf8")) as OpenAPIV3.Document
+    openapi = JSON.parse(readFileSync(openapi, "utf8")) as OpenAPIV3_1.Document
+  } else {
+    openapi = JSON.parse(JSON.stringify(openapi)) as OpenAPIV3_1.Document
   }
 
   const exports = new Set<string>()

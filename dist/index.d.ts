@@ -1,6 +1,6 @@
-import type { OpenAPIV3 } from "openapi-types";
+import type { OpenAPIV3_1 } from "openapi-types";
 export declare type Options = {
-    openapi: OpenAPIV3.Document | string;
+    openapi: OpenAPIV3_1.Document | string;
     bannerComment?: string;
     outputFilePath?: string;
 };
