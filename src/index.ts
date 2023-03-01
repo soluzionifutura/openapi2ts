@@ -33,7 +33,10 @@ export async function parse({
  * openapi definition and regenerate this file.
  */
 `
-}: Options): Promise<Set<string>> {
+}: Options): Promise<{
+  data: string
+  exports: Set<string>
+}> {
   if (typeof openapi === "string") {
     openapi = JSON.parse(readFileSync(openapi, "utf8")) as OpenAPIV3_1.Document
   } else {
@@ -62,5 +65,8 @@ export async function parse({
     writeFileSync(outputFilePath, data)
   }
   
-  return exports
+  return {
+    data,
+    exports
+  }
 }

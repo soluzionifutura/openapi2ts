@@ -14,7 +14,7 @@ npm i @soluzioni-futura/openapi2ts
 
 ### Module interface
 
-The module exports a single function `parse` which generates a TypeScript file from an OpenAPIv3 schema. The `parse` function takes an `Options` object as input and returns a Promise that resolves to the generated TypeScript file as a string. Here's an example of how to use the parse function:
+The module exports a single function `parse` which generates a TypeScript file from an OpenAPIv3 schema. The `parse` function takes an `Options` object as input and returns a Promise that resolves to an object containing at key `data` the generated TypeScript file as a string and at key `exports` a set of all exported type names. Here's an example of how to use the parse function:
 
 ```ts
 import { parse, Options } from "openapi2ts";
