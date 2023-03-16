@@ -1,20 +1,29 @@
 #!/usr/bin/env node
 const { parse } = require("../dist")
+const axios = require("axios")
 const [,, ...args] = process.argv
 const [input, output] = args
 const { name, version } = require("../package.json")
 
-if (args.includes("--version") || args.includes("-v")) {
-  console.log(`${name} v${version}`)
-  process.exit(0)
-}
+void (async () => {
+  if (args.includes("--version") || args.includes("-v")) {
+    console.log(`${name} v${version}`)
+    process.exit(0)
+  }
 
-if (!input || !output) {
-  console.error("Usage: openapi2ts <input> <output>")
-  process.exit(1)
-}
+  if (!input || !output) {
+    console.error("Usage: openapi2ts <input> <output>")
+    process.exit(1)
+  }
 
-console.log(`Parsing ${input} to ${output}`)
-parse({ openapi: input, outputFilePath: output })
-  .then(() => console.log(`Generated ${output}`))
-  .catch(console.error)
+  let openapi
+  if (input.startsWith("http")) {
+    console.log(`Downloading api definition`)
+    const { data } = await axios.get(input)
+    openapi = data
+  }
+  
+  console.log(`Parsing ${input} to ${output}`)
+  await parse({ openapi: openapi || input, outputFilePath: output })
+  console.log(`Generated ${output}`)
+})().catch(console.error)
