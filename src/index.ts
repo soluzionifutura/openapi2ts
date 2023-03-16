@@ -1,4 +1,5 @@
-import { readFileSync, writeFileSync } from "fs"
+import { readFileSync, writeFileSync, ensureDir } from "fs-extra"
+import path from "path"
 import { compile } from "json-schema-to-typescript"
 import type { OpenAPIV3_1 } from "openapi-types"
 
@@ -62,6 +63,7 @@ export async function parse({
   }))).join("\n")
 
   if (outputFilePath) {
+    ensureDir(path.parse(outputFilePath).dir)
     writeFileSync(outputFilePath, data)
   }
   
