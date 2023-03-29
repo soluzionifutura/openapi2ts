@@ -380,7 +380,7 @@ function _parse() {
             });
           }));
         case 6:
-          _context.t1 = _context.sent.join("\n");
+          _context.t1 = _context.sent.join("\n").replace(/^export interface (\w+) /gm, "export type $1 = ");
           data = _context.t0 + _context.t1;
           if (outputFilePath) {
             ensureDir(path.parse(outputFilePath).dir);

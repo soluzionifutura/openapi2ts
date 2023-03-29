@@ -60,7 +60,9 @@ export async function parse({
         semi: false
       }
     })
-  }))).join("\n")
+  })))
+    .join("\n")
+    .replace(/^export interface (\w+) /gm, "export type $1 = ")
 
   if (outputFilePath) {
     ensureDir(path.parse(outputFilePath).dir)
